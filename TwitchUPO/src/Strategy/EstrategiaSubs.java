@@ -4,12 +4,12 @@
  */
 package Strategy;
 
-import Factory.Directo;
+import twitchupo.Streamer;
 
 /**
  *
  * @author admin
  */
 public interface EstrategiaSubs {
-    void pagarSuscripcion();
+    void pagarSuscripcion(Suscriptor sub, Streamer streamer);
 }

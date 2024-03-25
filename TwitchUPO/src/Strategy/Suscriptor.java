@@ -11,22 +11,18 @@ import twitchupo.Usuario;
  *
  * @author nuria
  */
-public abstract class Suscriptor extends Usuario {
+public class Suscriptor extends Usuario {
 
     private Streamer streamerSuscrito;
 
     private EstrategiaSubs estrategiaSubs;
-
-    public final double precioPrime = 0.00;
-    public final double precioT1 = 4.99;
-    public final double precioT2 = 9.99;
-    public final double precioT3 = 24.99;
+    
 
     public Suscriptor(int id, String userNickname, String contraseña, String biografia, String correo, Streamer streamerSuscrito) {
         super(id, userNickname, contraseña, biografia, correo);
         this.streamerSuscrito = streamerSuscrito;
         //La sub por defecto es la Tier1
-        this.estrategiaSubs = new SubTier1(this.getId(), this.getUserNickname(), this.getContraseña(), this.getBiografia(), this.getCorreo(), this.getStreamerSuscrito());
+        this.estrategiaSubs = new SubTier1();
     }
 
     public Streamer getStreamerSuscrito() {
@@ -47,29 +43,29 @@ public abstract class Suscriptor extends Usuario {
         switch (tipoSub) {
             case "Prime":
                 if (!(estrategiaSubs instanceof SubPrime)) {
-                    setEstrategiaSubs(new SubPrime(this.getId(), this.getUserNickname(), this.getContraseña(), this.getBiografia(), this.getCorreo(), this.getStreamerSuscrito()));
+                    setEstrategiaSubs(new SubPrime());
                 }
                 break;
             case "Tier1":
                 if (!(estrategiaSubs instanceof SubTier1)) {
-                    setEstrategiaSubs(new SubTier1(this.getId(), this.getUserNickname(), this.getContraseña(), this.getBiografia(), this.getCorreo(), this.getStreamerSuscrito()));
+                    setEstrategiaSubs(new SubTier1());
                 }
                 break;
             case "Tier2":
                 if (!(estrategiaSubs instanceof SubTier2)) {
-                    setEstrategiaSubs(new SubTier2(this.getId(), this.getUserNickname(), this.getContraseña(), this.getBiografia(), this.getCorreo(), this.getStreamerSuscrito()));
+                    setEstrategiaSubs(new SubTier2());
                 }
                 break;
             case "Tier3":
                 if (!(estrategiaSubs instanceof SubTier3)) {
-                    setEstrategiaSubs(new SubTier3(this.getId(), this.getUserNickname(), this.getContraseña(), this.getBiografia(), this.getCorreo(), this.getStreamerSuscrito()));
+                    setEstrategiaSubs(new SubTier3());
                 }
                 break;
         }
     }
 
     private void pagar() {
-        estrategiaSubs.pagarSuscripcion();
+        estrategiaSubs.pagarSuscripcion(this, this.getStreamerSuscrito());
     }
 
     @Override

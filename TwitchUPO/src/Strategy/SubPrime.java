@@ -11,18 +11,13 @@ import twitchupo.Streamer;
  *
  * @author nuria
  */
-public class SubPrime extends Suscriptor implements EstrategiaSubs {
+public class SubPrime implements EstrategiaSubs {
 
-    private double precio;
-
-    public SubPrime(int id, String userNickname, String contraseña, String biografia, String correo, Streamer streamerSuscrito) {
-        super(id, userNickname, contraseña, biografia, correo, streamerSuscrito);
-        this.precio = super.precioPrime;
-    }
+    private static final double precioPrime = 0.00;
 
     @Override
-    public void pagarSuscripcion() {
-        System.out.println("El usuario" + this.getUserNickname() + "se ha suscrito a" + this.getStreamerSuscrito().getUserNickname() + " con Prime pagando: " + this.precio + "€");
+    public void pagarSuscripcion(Suscriptor sub, Streamer streamer) {
+        System.out.println("El usuario" + sub.getUserNickname() + "se ha suscrito a" + streamer.getUserNickname() + " con Prime pagando: " + precioPrime + "€");
 
     }
 

@@ -19,6 +19,9 @@ public class Usuario {
     String biografia;
     String correo;
 
+    //Lista sigo, y suscrito
+    //Lista suscriptores
+    
     public Usuario(int id, String userNickname, String contraseña, String biografia, String correo) {
         this.id = id;
         this.userNickname = userNickname;
@@ -65,6 +68,14 @@ public class Usuario {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public void seguir(Streamer streamer) {
+        streamer.añadirSeguidor(this);
+    }
+
+    public void dejarDeSeguir(Streamer streamer) {
+        streamer.bajarSeguidor(this);
     }
 
     @Override

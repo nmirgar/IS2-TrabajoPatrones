@@ -11,18 +11,13 @@ import twitchupo.Streamer;
  *
  * @author nuria
  */
-public class SubTier1 extends Suscriptor implements EstrategiaSubs {
+public class SubTier1 implements EstrategiaSubs {
 
-    private double precio;
-
-    public SubTier1(int id, String userNickname, String contraseña, String biografia, String correo, Streamer streamerSuscrito) {
-        super(id, userNickname, contraseña, biografia, correo, streamerSuscrito);
-        this.precio = super.precioT1;
-    }
+    private final double precioT1 = 4.99;
 
     @Override
-    public void pagarSuscripcion() {
-        System.out.println("El usuario" + this.getUserNickname() + "se ha suscrito a" + this.getStreamerSuscrito().getUserNickname() + " con Tier 1 pagando: " + this.precio + "€");
-
+    public void pagarSuscripcion(Suscriptor sub, Streamer streamer) {
+        System.out.println("El usuario" + sub.getUserNickname() + "se ha suscrito a" + streamer.getUserNickname() + " con Tier 1 pagando: " + precioT1 + "€");
+        
     }
 }

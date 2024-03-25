@@ -13,14 +13,14 @@ import java.util.List;
  */
 public class Streamer extends Usuario {
 
-    private List<Seguidor> seguidores;
+    private List<Usuario> seguidores;
     private List<Suscriptor> suscriptores;
 
     public Streamer(int id, String userNickname, String contraseña, String biografia, String correo) {
         super(id, userNickname, contraseña, biografia, correo);
     }
 
-    public List<Seguidor> getSeguidores() {
+    public List<Usuario> getSeguidores() {
         return seguidores;
     }
 
@@ -29,8 +29,8 @@ public class Streamer extends Usuario {
     }
 
     //Añadir gente
-    public void añadirSeguidor(Seguidor seg) {
-        this.seguidores.add(seg);
+    public void añadirSeguidor(Usuario usu) {
+        this.seguidores.add(usu);
     }
 
     public void añadirSuscriptor(Suscriptor sub) {
@@ -38,8 +38,8 @@ public class Streamer extends Usuario {
     }
 
     //Se va gente
-    public void bajarSeguidor(Seguidor seg) {
-        this.seguidores.remove(seg);
+    public void bajarSeguidor(Usuario usu) {
+        this.seguidores.remove(usu);
     }
 
     public void bajarSuscriptor(Suscriptor sub) {
