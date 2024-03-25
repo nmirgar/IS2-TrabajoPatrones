@@ -12,8 +12,8 @@ import java.util.Date;
  */
 public class Directo extends Contenido {
 
-    public Directo(int id, String titulo, Date fecha, String nickname) {
-        super(id, titulo, fecha, nickname);
+    public Directo(int id, String titulo, Date fecha, String userNickname) {
+        super(id, titulo, fecha, userNickname);
     }
 
     @Override

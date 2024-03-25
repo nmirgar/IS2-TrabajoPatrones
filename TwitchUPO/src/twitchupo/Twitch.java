@@ -21,6 +21,9 @@ public class Twitch {
     private List<VOD> vods;
     private List<Clip> clips;
 
+    private List<Usuario> usuarios;
+    private List<Streamer> streamers;
+
     public static Twitch twitch; //Para el patron SINGLETON
 
     private Twitch() {
@@ -47,6 +50,10 @@ public class Twitch {
 
     public List<Clip> getClips() {
         return clips;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
     }
 
     //Añadir contenido
@@ -80,7 +87,7 @@ public class Twitch {
         Iterator it = directos.iterator();
         while (it.hasNext()) {
             Directo d = (Directo) it.next();
-            if (d.getNickname().equals(userNickname)) {
+            if (d.getUserNickname().equals(userNickname)) {
                 System.out.println(d);
             }
         }
@@ -90,7 +97,7 @@ public class Twitch {
         Iterator it = vods.iterator();
         while (it.hasNext()) {
             VOD v = (VOD) it.next();
-            if (v.getNickname().equals(userNickname)) {
+            if (v.getUserNickname().equals(userNickname)) {
                 System.out.println(v);
             }
         }
@@ -100,7 +107,7 @@ public class Twitch {
         Iterator it = clips.iterator();
         while (it.hasNext()) {
             Clip c = (Clip) it.next();
-            if (c.getNickname().equals(userNickname)) {
+            if (c.getUserNickname().equals(userNickname)) {
                 System.out.println(c);
             }
         }
@@ -144,6 +151,52 @@ public class Twitch {
             }
         }
         return c;
+    }
+
+    //Añadir o quitar gente
+    public void añadirUsuario(Usuario u) {
+        this.usuarios.add(u);
+    }
+
+    public void eliminarUsuario(Usuario u) {
+        this.usuarios.remove(u);
+    }
+
+    //Añadir / quitar streamers
+    public void añadirStreamer(Streamer s) {
+        this.streamers.add(s);
+    }
+
+    public void eliminarStreamer(Streamer s) {
+        this.streamers.remove(s);
+    }
+
+    //Buscar Usuario
+    public Usuario buscarUsuario(String userNickname) {
+        Iterator it = usuarios.iterator();
+        Usuario u = null;
+        boolean exito = false;
+        while (it.hasNext() && !exito) {
+            u = (Usuario) it.next();
+            if (u.getUserNickname().equals(userNickname)) {
+                exito = true;
+            }
+        }
+        return u;
+    }
+
+    //Buscar streamer
+    public Streamer buscarStreamer(String userNickname) {
+        Iterator it = streamers.iterator();
+        Streamer s = null;
+        boolean exito = false;
+        while (it.hasNext() && !exito) {
+            s = (Streamer) it.next();
+            if (s.getUserNickname().equals(userNickname)) {
+                exito = true;
+            }
+        }
+        return s;
     }
 
 }

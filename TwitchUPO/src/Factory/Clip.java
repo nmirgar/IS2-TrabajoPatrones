@@ -14,8 +14,8 @@ public class Clip extends Contenido {
 
     private int duracion;
 
-    public Clip(int id, String titulo, Date fecha, String nickname, int duracion) {
-        super(id, titulo, fecha, nickname);
+    public Clip(int id, String titulo, Date fecha, String userNickname, int duracion) {
+        super(id, titulo, fecha, userNickname);
         this.duracion = duracion;
     }
 
@@ -29,6 +29,7 @@ public class Clip extends Contenido {
 
     @Override
     public String toString() {
-        return "Clip" + super.toString();
+        return "Clip" + super.toString() + "duracion=" + duracion + '}';
     }
+
 }
