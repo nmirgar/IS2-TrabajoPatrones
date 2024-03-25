@@ -4,10 +4,20 @@
  */
 package Factory;
 
+import java.util.Date;
+
 /**
  *
  * @author nuria
  */
-public class VOD {
-    
+public class VOD extends Contenido {
+
+    public VOD(int id, String titulo, Date fecha, String nickname) {
+        super(id, titulo, fecha, nickname);
+    }
+
+    @Override
+    public String toString() {
+        return "VOD" + super.toString();
+    }
 }
