@@ -5,6 +5,7 @@
 package twitchupo;
 
 import Strategy.Suscriptor;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,6 +19,8 @@ public class Streamer extends Usuario {
 
     public Streamer(int id, String userNickname, String contraseña, String biografia, String correo) {
         super(id, userNickname, contraseña, biografia, correo);
+        this.seguidores = new ArrayList<Usuario>();
+        this.suscriptores = new ArrayList<Suscriptor>();
     }
 
     public List<Usuario> getSeguidores() {
@@ -28,7 +31,7 @@ public class Streamer extends Usuario {
         return suscriptores;
     }
 
-    //Añadir gente
+    //Añadir gente - desde USUARIO
     public void añadirSeguidor(Usuario usu) {
         this.seguidores.add(usu);
     }
@@ -37,7 +40,7 @@ public class Streamer extends Usuario {
         this.suscriptores.add(sub);
     }
 
-    //Se va gente
+    //Banneo gente / te deja de seguir gente
     public void bajarSeguidor(Usuario usu) {
         this.seguidores.remove(usu);
     }

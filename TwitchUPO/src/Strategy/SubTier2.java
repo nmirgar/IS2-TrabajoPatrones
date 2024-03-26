@@ -13,11 +13,11 @@ import twitchupo.Streamer;
  */
 public class SubTier2 implements EstrategiaSubs {
 
-        public final double precioT2 = 9.99;
+    public final double precioT2 = 9.99;
 
     @Override
     public void pagarSuscripcion(Suscriptor sub, Streamer streamer) {
-        System.out.println("El usuario" + sub.getUserNickname() + "se ha suscrito a" + streamer.getUserNickname() + " con Tier 2 pagando: " + precioT2 + "€");
+        System.out.println("El usuario" + sub.getStreamerSuscrito().getUserNickname() + "se ha suscrito a" + sub.getUsuario().getUserNickname() + " con Tier 2 pagando: " + precioT2 + "€");
 
     }
 

@@ -11,33 +11,37 @@ import twitchupo.Usuario;
  *
  * @author nuria
  */
-public class Suscriptor extends Usuario {
+public class Suscriptor {
 
+    private Usuario usuario;
     private Streamer streamerSuscrito;
-
     private EstrategiaSubs estrategiaSubs;
-    
 
-    public Suscriptor(int id, String userNickname, String contraseña, String biografia, String correo, Streamer streamerSuscrito) {
-        super(id, userNickname, contraseña, biografia, correo);
+    public Suscriptor(Usuario usuario, Streamer streamerSuscrito) {
+        this.usuario = usuario;
         this.streamerSuscrito = streamerSuscrito;
+
         //La sub por defecto es la Tier1
         this.estrategiaSubs = new SubTier1();
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
     }
 
     public Streamer getStreamerSuscrito() {
         return streamerSuscrito;
     }
 
-    public EstrategiaSubs getEstrategiaSubs() {
-        return estrategiaSubs;
-    }
-
     public void setEstrategiaSubs(EstrategiaSubs estrategiaSubs) {
         this.estrategiaSubs = estrategiaSubs;
     }
 
-    //Metodo cambiar suscripcion
+    public EstrategiaSubs getEstrategiaSubs() {
+        return estrategiaSubs;
+    }
+
+    //Metodo ESTRATEGIA cambiar suscripcion
     public void cambiarSuscripcion(String tipoSub) {
 
         switch (tipoSub) {
@@ -70,7 +74,7 @@ public class Suscriptor extends Usuario {
 
     @Override
     public String toString() {
-        return "Suscriptor" + super.toString() + "streamerSuscrito=" + streamerSuscrito + ", estrategiaSubs=" + estrategiaSubs + '}';
+        return "Suscriptor{" + "usuario=" + usuario.getUserNickname() + ", streamerSuscrito=" + streamerSuscrito + ", estrategiaSubs=" + estrategiaSubs + '}';
     }
 
 }

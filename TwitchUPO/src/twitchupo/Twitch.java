@@ -17,12 +17,12 @@ import java.util.List;
  */
 public class Twitch {
 
-    private List<Directo> directos;
-    private List<VOD> vods;
-    private List<Clip> clips;
+    private final List<Directo> directos;
+    private final List<VOD> vods;
+    private final List<Clip> clips;
 
-    private List<Usuario> usuarios;
-    private List<Streamer> streamers;
+    private final List<Usuario> usuarios;
+    private final List<Streamer> streamers;
 
     public static Twitch twitch; //Para el patron SINGLETON
 
@@ -35,7 +35,7 @@ public class Twitch {
         this.streamers = new ArrayList<>();
     }
 
-    //Metodo de unica instancia
+    //Metodo de unica instancia - SINGLETON
     public static Twitch create() {
         if (twitch == null) {
             twitch = new Twitch();
@@ -58,6 +58,11 @@ public class Twitch {
     public List<Usuario> getUsuarios() {
         return usuarios;
     }
+
+    public List<Streamer> getStreamers() {
+        return streamers;
+    }
+    
 
     //Añadir contenido
     public void añadirDirecto(Directo d) {
@@ -165,7 +170,7 @@ public class Twitch {
         this.usuarios.remove(u);
     }
 
-    //Añadir / quitar streamers
+    //Añadir o quitar streamers
     public void añadirStreamer(Streamer s) {
         this.streamers.add(s);
     }

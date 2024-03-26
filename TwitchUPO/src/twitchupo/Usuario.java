@@ -4,6 +4,8 @@
  */
 package twitchupo;
 
+import Strategy.Suscriptor;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -19,15 +21,17 @@ public class Usuario {
     String biografia;
     String correo;
 
-    //Lista sigo, y suscrito
-    //Lista suscriptores
-    
+    private List<Streamer> seguidos; //Sigo a streamers
+    private List<Streamer> suscritos; //Me suscribo a streamers
+
     public Usuario(int id, String userNickname, String contraseña, String biografia, String correo) {
         this.id = id;
         this.userNickname = userNickname;
         this.contraseña = contraseña;
         this.biografia = biografia;
         this.correo = correo;
+        this.seguidos = new ArrayList<Streamer>();
+        this.suscritos = new ArrayList<Streamer>();
     }
 
     public int getId() {
@@ -70,12 +74,38 @@ public class Usuario {
         this.correo = correo;
     }
 
-    public void seguir(Streamer streamer) {
+    public List<Streamer> getSeguidos() {
+        return seguidos;
+    }
+
+    public List<Streamer> getSuscritos() {
+        return suscritos;
+    }
+    
+
+    //Seguir -  dejar de seguir
+    public void seguir(Streamer streamer) {       
         streamer.añadirSeguidor(this);
+        this.seguidos.add(streamer);
     }
 
     public void dejarDeSeguir(Streamer streamer) {
         streamer.bajarSeguidor(this);
+        this.seguidos.remove(streamer);
+    }
+    
+    //Suscribirse - quitar suscripcion
+    public void suscribirse(Streamer streamer){
+        Suscriptor sub = new Suscriptor(this, streamer);
+        streamer.añadirSuscriptor(sub);        
+        this.suscritos.add(streamer);
+        
+    }
+    
+    public void cancelarSuscripcio(Streamer streamer){
+        Suscriptor sub = new Suscriptor(this, streamer);
+        streamer.bajarSuscriptor(sub);
+        this.suscritos.remove(streamer);
     }
 
     @Override
