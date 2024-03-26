@@ -2,17 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Factory;
+package twitchupo;
 
-import twitchupo.Twitch;
 import java.util.Date;
 import java.util.Scanner;
-import twitchupo.Streamer;
 
-/**
- *
- * @author nuria
- */
 public class FactoriaContenido {
 
     public static void crearContenido(String tipoContenido, Streamer streamer) {
@@ -31,7 +25,7 @@ public class FactoriaContenido {
 
                 Directo d = new Directo(t.getDirectos().size(), titulo, fecha, streamer);
 
-                t.hacerDirecto(titulo, fecha, streamer);
+                t.hacerDirecto(d);
 
                 break;
 
@@ -48,7 +42,7 @@ public class FactoriaContenido {
 
                 VOD vod = new VOD(t.getDirectos().size(), titulo, fecha, streamer);
 
-                t.subirVOD(titulo, fecha, streamer);
+                t.subirVOD(vod);
 
                 break;
 
@@ -64,11 +58,11 @@ public class FactoriaContenido {
 
                 Clip c = new Clip(t.getDirectos().size(), titulo, fecha, duracion, streamer);
 
-                t.hacerClip(titulo, fecha, duracion, streamer);
+                t.hacerClip(c);
 
                 break;
         }
-
+        sc.close();
     }
 
 }

@@ -4,15 +4,10 @@
  */
 package twitchupo;
 
-import Strategy.Suscriptor;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
-/**
- *
- * @author nuria
- */
+
 public class Usuario {
 
     int id;

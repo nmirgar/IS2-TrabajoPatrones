@@ -2,15 +2,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Strategy;
+package twitchupo;
 
-import Factory.Directo;
-import twitchupo.Streamer;
-
-/**
- *
- * @author nuria
- */
 public class SubTier3 implements EstrategiaSubs {
 
     public static final double precioT3 = 24.99;

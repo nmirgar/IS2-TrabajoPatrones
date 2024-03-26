@@ -4,10 +4,7 @@
  */
 package twitchupo;
 
-/**
- *
- * @author admin
- */
+
 public class TwitchUPO {
 
     /**

@@ -4,19 +4,11 @@
  */
 package twitchupo;
 
-import Strategy.SubPrime;
-import Strategy.SubTier1;
-import Strategy.SubTier2;
-import Strategy.SubTier3;
-import Strategy.Suscriptor;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-/**
- *
- * @author nuria
- */
 public class Streamer extends Usuario {
 
     private List<Usuario> seguidores;
@@ -58,7 +50,7 @@ public class Streamer extends Usuario {
 
     public double cobrar() {
         Suscriptor s;
-        Iterator it = suscriptores.iterator();
+        Iterator<Suscriptor> it = suscriptores.iterator();
         while (it.hasNext()) {
             s = (Suscriptor) it.next();
             if (s.getEstrategiaSubs() instanceof SubTier1) {
