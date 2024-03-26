@@ -8,6 +8,7 @@ import Factory.Clip;
 import Factory.Directo;
 import Factory.VOD;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -65,15 +66,19 @@ public class Twitch {
     
 
     //Añadir contenido
-    public void añadirDirecto(Directo d) {
+    public void hacerDirecto(String titulo, Date fecha, Streamer streamer) {
+        Directo d = new Directo(directos.size(), titulo, fecha, streamer);
+        //State boolean en directo o lo que queramos hacer -> boolean online true
         this.directos.add(d);
     }
 
-    public void añadirVOD(VOD vod) {
+    public void subirVOD(String titulo, Date fecha, Streamer streamer) {
+        VOD vod = new VOD(vods.size(), titulo, fecha, streamer);
         this.vods.add(vod);
     }
 
-    public void añadirClip(Clip c) {
+    public void hacerClip(String titulo, Date fecha, int duracion, Usuario usuario) {
+        Clip c = new Clip(clips.size(),titulo, fecha, duracion, usuario);
         this.clips.add(c);
     }
 
@@ -91,31 +96,31 @@ public class Twitch {
     }
 
     //Listar Contenido
-    public void listarDirectos(String userNickname) {
+    public void listarDirectos(Streamer streamer) {
         Iterator it = directos.iterator();
         while (it.hasNext()) {
             Directo d = (Directo) it.next();
-            if (d.getUserNickname().equals(userNickname)) {
+            if (d.getStreamer().getUserNickname().equals(streamer.getUserNickname())) {
                 System.out.println(d);
             }
         }
     }
 
-    public void listarVODs(String userNickname) {
+    public void listarVODs(Streamer streamer) {
         Iterator it = vods.iterator();
         while (it.hasNext()) {
             VOD v = (VOD) it.next();
-            if (v.getUserNickname().equals(userNickname)) {
+            if (v.getStreamer().getUserNickname().equals(streamer.getUserNickname())) {
                 System.out.println(v);
             }
         }
     }
 
-    public void listarClips(String userNickname) {
+    public void listarClips(Streamer streamer) {
         Iterator it = clips.iterator();
         while (it.hasNext()) {
             Clip c = (Clip) it.next();
-            if (c.getUserNickname().equals(userNickname)) {
+            if (c.getUsuario().getUserNickname().equals(streamer.getUserNickname())) {
                 System.out.println(c);
             }
         }
@@ -180,13 +185,13 @@ public class Twitch {
     }
 
     //Buscar Usuario
-    public Usuario buscarUsuario(String userNickname) {
+    public Usuario buscarUsuario(Usuario usuario) {
         Iterator it = usuarios.iterator();
         Usuario u = null;
         boolean exito = false;
         while (it.hasNext() && !exito) {
             u = (Usuario) it.next();
-            if (u.getUserNickname().equals(userNickname)) {
+            if (u.getUserNickname().equals(usuario.getUserNickname())) {
                 exito = true;
             }
         }
@@ -194,13 +199,13 @@ public class Twitch {
     }
 
     //Buscar streamer
-    public Streamer buscarStreamer(String userNickname) {
+    public Streamer buscarStreamer(Streamer streamer) {
         Iterator it = streamers.iterator();
         Streamer s = null;
         boolean exito = false;
         while (it.hasNext() && !exito) {
             s = (Streamer) it.next();
-            if (s.getUserNickname().equals(userNickname)) {
+            if (s.getUserNickname().equals(streamer.getUserNickname())) {
                 exito = true;
             }
         }

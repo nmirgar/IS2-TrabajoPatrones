@@ -13,7 +13,7 @@ import twitchupo.Streamer;
  */
 public class SubTier2 implements EstrategiaSubs {
 
-    public final double precioT2 = 9.99;
+    public static final double precioT2 = 9.99;
 
     @Override
     public void pagarSuscripcion(Suscriptor sub, Streamer streamer) {

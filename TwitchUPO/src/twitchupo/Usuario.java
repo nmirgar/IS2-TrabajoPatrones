@@ -102,7 +102,7 @@ public class Usuario {
         
     }
     
-    public void cancelarSuscripcio(Streamer streamer){
+    public void cancelarSuscripcion(Streamer streamer){
         Suscriptor sub = new Suscriptor(this, streamer);
         streamer.bajarSuscriptor(sub);
         this.suscritos.remove(streamer);

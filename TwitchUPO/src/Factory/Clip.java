@@ -5,6 +5,7 @@
 package Factory;
 
 import java.util.Date;
+import twitchupo.Usuario;
 
 /**
  *
@@ -13,10 +14,12 @@ import java.util.Date;
 public class Clip extends Contenido {
 
     private int duracion;
+    private Usuario usuario; //Los clips los puede generar cualquiera
 
-    public Clip(int id, String titulo, Date fecha, String userNickname, int duracion) {
-        super(id, titulo, fecha, userNickname);
+    public Clip(int id, String titulo, Date fecha, int duracion, Usuario usuario) {
+        super(id, titulo, fecha);
         this.duracion = duracion;
+        this.usuario = usuario;
     }
 
     public int getDuracion() {
@@ -26,6 +29,11 @@ public class Clip extends Contenido {
     public void setDuracion(int duracion) {
         this.duracion = duracion;
     }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+    
 
     @Override
     public String toString() {

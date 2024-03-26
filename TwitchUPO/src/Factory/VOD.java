@@ -5,15 +5,23 @@
 package Factory;
 
 import java.util.Date;
+import twitchupo.Streamer;
 
 /**
  *
  * @author nuria
  */
 public class VOD extends Contenido {
+    
+    private Streamer streamer;
 
-    public VOD(int id, String titulo, Date fecha, String userNickname) {
-        super(id, titulo, fecha, userNickname);
+    public VOD(int id, String titulo, Date fecha, Streamer streamer) {
+        super(id, titulo, fecha);
+        this.streamer = streamer;
+    }
+
+    public Streamer getStreamer() {
+        return streamer;
     }
 
     @Override

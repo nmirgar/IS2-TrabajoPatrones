@@ -7,6 +7,7 @@ package Factory;
 import twitchupo.Twitch;
 import java.util.Date;
 import java.util.Scanner;
+import twitchupo.Streamer;
 
 /**
  *
@@ -14,7 +15,7 @@ import java.util.Scanner;
  */
 public class FactoriaContenido {
 
-    public static void crearContenido(String tipoContenido, String userNickname) {
+    public static void crearContenido(String tipoContenido, Streamer streamer) {
         Twitch t = Twitch.create(); //SINGLETON
 
         String titulo;
@@ -28,14 +29,14 @@ public class FactoriaContenido {
                 titulo = sc.nextLine();
                 fecha = new Date();
 
-                Directo d = new Directo(t.getDirectos().size(), titulo, fecha, userNickname);
+                Directo d = new Directo(t.getDirectos().size(), titulo, fecha, streamer);
 
-                t.añadirDirecto(d);
+                t.hacerDirecto(titulo, fecha, streamer);
 
                 break;
 
             case "VOD":
-                t.listarDirectos(userNickname);
+                t.listarDirectos(streamer);
                 System.out.println("Título el ID del directo");
                 int id;
                 id = sc.nextInt();
@@ -45,9 +46,9 @@ public class FactoriaContenido {
                 titulo = daux.getTitulo();
                 fecha = daux.getFecha();
 
-                VOD vod = new VOD(t.getDirectos().size(), titulo, fecha, userNickname);
+                VOD vod = new VOD(t.getDirectos().size(), titulo, fecha, streamer);
 
-                t.añadirVOD(vod);
+                t.subirVOD(titulo, fecha, streamer);
 
                 break;
 
@@ -61,9 +62,9 @@ public class FactoriaContenido {
                 System.out.println("Seleccione la duracion");
                 duracion = sc.nextInt();
 
-                Clip c = new Clip(t.getDirectos().size(), titulo, fecha, userNickname, duracion);
+                Clip c = new Clip(t.getDirectos().size(), titulo, fecha, duracion, streamer);
 
-                t.añadirClip(c);
+                t.hacerClip(titulo, fecha, duracion, streamer);
 
                 break;
         }

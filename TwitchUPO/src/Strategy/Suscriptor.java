@@ -31,7 +31,7 @@ public class Suscriptor {
 
     public Streamer getStreamerSuscrito() {
         return streamerSuscrito;
-    }
+    }    
 
     public void setEstrategiaSubs(EstrategiaSubs estrategiaSubs) {
         this.estrategiaSubs = estrategiaSubs;

@@ -4,8 +4,13 @@
  */
 package twitchupo;
 
+import Strategy.SubPrime;
+import Strategy.SubTier1;
+import Strategy.SubTier2;
+import Strategy.SubTier3;
 import Strategy.Suscriptor;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -16,6 +21,8 @@ public class Streamer extends Usuario {
 
     private List<Usuario> seguidores;
     private List<Suscriptor> suscriptores;
+
+    private double sueldo = 0;
 
     public Streamer(int id, String userNickname, String contraseña, String biografia, String correo) {
         super(id, userNickname, contraseña, biografia, correo);
@@ -49,9 +56,28 @@ public class Streamer extends Usuario {
         this.suscriptores.remove(sub);
     }
 
+    public double cobrar() {
+        Suscriptor s;
+        Iterator it = suscriptores.iterator();
+        while (it.hasNext()) {
+            s = (Suscriptor) it.next();
+            if (s.getEstrategiaSubs() instanceof SubTier1) {
+                sueldo += SubTier1.precioT1 / 2;
+            } else if (s.getEstrategiaSubs() instanceof SubTier2) {
+                sueldo += SubTier2.precioT2 / 2;
+            } else if (s.getEstrategiaSubs() instanceof SubTier3) {
+                sueldo += SubTier3.precioT3 / 2;
+            } else {
+                sueldo += 1;
+
+            }
+        }
+        return sueldo;
+    }
+
     @Override
     public String toString() {
-        return "Streamer" + super.toString();
+        return "Streamer" + super.toString() + "Sueldo: " + sueldo;
     }
 
 }
