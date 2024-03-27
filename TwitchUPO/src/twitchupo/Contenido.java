@@ -11,7 +11,6 @@ public abstract class Contenido implements Sujeto {
     private int id;
     private String titulo;
     private Date fecha;
-    private static Contenido c; 
 
     public Contenido(int id, String titulo, Date fecha) {
         this.id = id;
@@ -43,12 +42,6 @@ public abstract class Contenido implements Sujeto {
         this.fecha = fecha;
     }
 
-    public static Contenido getInstance() { 
-        if (c == null) {
-            c = new Contenido();
-        }
-        return c;
-    }
 
     @Override
     public String toString() {

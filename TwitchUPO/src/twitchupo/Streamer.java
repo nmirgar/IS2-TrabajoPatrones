@@ -13,6 +13,8 @@ public class Streamer extends Usuario implements Estado {
 
     private List<Usuario> seguidores;
     private List<Suscriptor> suscriptores;
+    private List<Contenido> contenidoSubido;
+
     private double sueldo = 0;
     private String estado = DESCONECTADO;
 
@@ -38,6 +40,10 @@ public class Streamer extends Usuario implements Estado {
         return seguidores;
     }
 
+     public List<Contenido> getContenidoSubido() {
+        return contenidoSubido;
+    }
+
     public List<Suscriptor> getSuscriptores() {
         return suscriptores;
     }
@@ -58,6 +64,10 @@ public class Streamer extends Usuario implements Estado {
 
     public void bajarSuscriptor(Suscriptor sub) {
         this.suscriptores.remove(sub);
+    }
+
+    public void subirContenido(Contenido d){
+        this.contenidoSubido.add(d);
     }
 
     public double cobrar() {

@@ -65,12 +65,11 @@ public class Suscriptor implements Observador {
         estrategiaSubs.pagarSuscripcion(this, this.getStreamerSuscrito());
     }
 
-    public void update(){
-        Iterator<Streamer> it = streamerSuscrito.iterator();
-        while(it.hasNext()){
-            Contenido c = Contenido.getInstance();
-        }
-        
+    public void update(Streamer s, Contenido c){
+      
+        //Enviar e-correo que diga: 
+        //El streamer.getNombre() ha subido c.getTitulo()
+        System.out.println("El Streamer " + s.getUserNickname() + "acaba de subir nuevo contenido: " + c.getTitulo());
     }
 
     @Override

@@ -26,7 +26,7 @@ public class FactoriaContenido {
                 Directo d = new Directo(t.getDirectos().size(), titulo, fecha, streamer);
 
                 t.hacerDirecto(d);
-
+                
                 break;
 
             case "VOD":
@@ -43,7 +43,7 @@ public class FactoriaContenido {
                 VOD vod = new VOD(t.getDirectos().size(), titulo, fecha, streamer);
 
                 t.subirVOD(vod);
-
+                
                 break;
 
             case "Clip":
@@ -59,7 +59,7 @@ public class FactoriaContenido {
                 Clip c = new Clip(t.getDirectos().size(), titulo, fecha, duracion, streamer);
 
                 t.hacerClip(c);
-
+                
                 break;
         }
         sc.close();

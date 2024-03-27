@@ -12,12 +12,13 @@ import java.util.List;
 
 public class Twitch {
 
-    private final List<Directo> directos;
-    private final List<VOD> vods;
-    private final List<Clip> clips;
+    private List<Directo> directos;
+    private List<VOD> vods;
+    private List<Clip> clips;
+    private List<Contenido> contenido;
 
-    private final List<Usuario> usuarios;
-    private final List<Streamer> streamers;
+    private List<Usuario> usuarios;
+    private List<Streamer> streamers;
 
     public static Twitch twitch; //Para el patron SINGLETON
 
@@ -42,6 +43,10 @@ public class Twitch {
         return directos;
     }
 
+    public List<Contenido> getContenido() {
+        return contenido;
+    }
+
     public List<VOD> getVods() {
         return vods;
     }
@@ -62,27 +67,53 @@ public class Twitch {
     //Añadir contenido
     public void hacerDirecto(Directo d) {
         this.directos.add(d);
+        this.contenido.add(d);
+        Iterator<Suscriptor> it = d.getStreamer().getSuscriptores().iterator(); 
+        while (it.hasNext()) {
+            Suscriptor s = it.next();
+            s.update(d.getStreamer(), d);
+        }
     }
 
     public void subirVOD(VOD vod) {
         this.vods.add(vod);
+        this.contenido.add(vod);
+        Iterator<Suscriptor> it = vod.getStreamer().getSuscriptores().iterator();
+        while(it.hasNext()){
+            Suscriptor s = (Suscriptor) it.next();
+            s.update(vod.getStreamer(), vod);
+        }
+
     }
 
     public void hacerClip(Clip c) {
         this.clips.add(c);
+        this.contenido.add(c);
+        if(c.getUsuario() instanceof Streamer){
+            Streamer streamer =  (Streamer) c.getUsuario();
+            Iterator<Suscriptor> it = streamer.getSuscriptores().iterator();
+            while (it.hasNext()) {
+                Suscriptor s = (Suscriptor) it.next();
+                s.update( streamer, c);
+            }
+        }
     }
 
     //Eliminar Contenido
     public void borrarDirecto(Directo d) {
         this.directos.remove(d);
+        this.contenido.remove(d);
     }
 
     public void borrarVOD(VOD vod) {
         this.vods.remove(vod);
+        this.contenido.remove(vod);
     }
 
     public void borrarClip(Clip c) {
         this.clips.remove(c);
+        this.contenido.remove(c);
+
     }
 
     //Listar Contenido
