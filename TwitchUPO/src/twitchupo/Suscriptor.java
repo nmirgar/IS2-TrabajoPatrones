@@ -62,7 +62,11 @@ public class Suscriptor implements Observador {
     }
 
     public void pagar() {
-        estrategiaSubs.pagarSuscripcion(this, this.getStreamerSuscrito());
+        Iterator<Streamer> it = this.getStreamerSuscrito().iterator();
+        while (it.hasNext()) {
+            estrategiaSubs.pagarSuscripcion(this, (Streamer) it.next());
+        }
+        
     }
 
     public void update(Streamer s, Contenido c){
