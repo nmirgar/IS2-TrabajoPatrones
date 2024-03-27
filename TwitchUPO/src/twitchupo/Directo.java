@@ -25,5 +25,5 @@ public class Directo extends Contenido{
     public String toString() {
         return "Directo" + super.toString();
     }
-
+    
 }

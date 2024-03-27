@@ -68,35 +68,23 @@ public class Twitch {
     public void hacerDirecto(Directo d) {
         this.directos.add(d);
         this.contenido.add(d);
-        Iterator<Suscriptor> it = d.getStreamer().getSuscriptores().iterator(); 
-        while (it.hasNext()) {
-            Suscriptor s = it.next();
-            s.update(d.getStreamer(), d);
-        }
+        d.notificarObservador(d);
+        
     }
 
     public void subirVOD(VOD vod) {
         this.vods.add(vod);
         this.contenido.add(vod);
-        Iterator<Suscriptor> it = vod.getStreamer().getSuscriptores().iterator();
-        while(it.hasNext()){
-            Suscriptor s = (Suscriptor) it.next();
-            s.update(vod.getStreamer(), vod);
-        }
+        vod.notificarObservador(vod);
+        
 
     }
 
     public void hacerClip(Clip c) {
         this.clips.add(c);
         this.contenido.add(c);
-        if(c.getUsuario() instanceof Streamer){
-            Streamer streamer =  (Streamer) c.getUsuario();
-            Iterator<Suscriptor> it = streamer.getSuscriptores().iterator();
-            while (it.hasNext()) {
-                Suscriptor s = (Suscriptor) it.next();
-                s.update( streamer, c);
-            }
-        }
+        c.notificarObservador(c);
+        
     }
 
     //Eliminar Contenido

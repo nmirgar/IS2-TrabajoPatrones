@@ -71,9 +71,7 @@ public class Suscriptor implements Observador {
 
     public void update(Streamer s, Contenido c){
       
-        //Enviar e-correo que diga: 
-        //El streamer.getNombre() ha subido c.getTitulo()
-        System.out.println("El Streamer " + s.getUserNickname() + "acaba de subir nuevo contenido: " + c.getTitulo());
+        System.out.println("\nEl Streamer " + s.getUserNickname() + "acaba de subir nuevo contenido: " + c.getTitulo() +".\n");
     }
 
     @Override
