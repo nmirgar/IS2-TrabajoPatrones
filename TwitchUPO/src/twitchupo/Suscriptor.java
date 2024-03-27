@@ -3,21 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package twitchupo;
+import java.util.*;
 
-
-
-
-public class Suscriptor {
+public class Suscriptor implements Observador {
 
     private Usuario usuario;
-    private Streamer streamerSuscrito;
+    private ArrayList<Streamer> streamerSuscrito;
     private EstrategiaSubs estrategiaSubs;
 
     public Suscriptor(Usuario usuario, Streamer streamerSuscrito) {
         this.usuario = usuario;
-        this.streamerSuscrito = streamerSuscrito;
-
-        //La sub por defecto es la Tier1
+        this.streamerSuscrito.add(streamerSuscrito);
+        // La sub por defecto es la Tier1
         this.estrategiaSubs = new SubTier1();
     }
 
@@ -25,9 +22,9 @@ public class Suscriptor {
         return usuario;
     }
 
-    public Streamer getStreamerSuscrito() {
+    public ArrayList<Streamer> getStreamerSuscrito() {
         return streamerSuscrito;
-    }    
+    }
 
     public void setEstrategiaSubs(EstrategiaSubs estrategiaSubs) {
         this.estrategiaSubs = estrategiaSubs;
@@ -37,7 +34,7 @@ public class Suscriptor {
         return estrategiaSubs;
     }
 
-    //Metodo ESTRATEGIA cambiar suscripcion
+    // Metodo ESTRATEGIA cambiar suscripcion
     public void cambiarSuscripcion(String tipoSub) {
 
         switch (tipoSub) {
@@ -64,13 +61,22 @@ public class Suscriptor {
         }
     }
 
-    private void pagar() {
+    public void pagar() {
         estrategiaSubs.pagarSuscripcion(this, this.getStreamerSuscrito());
+    }
+
+    public void update(){
+        Iterator<Streamer> it = streamerSuscrito.iterator();
+        while(it.hasNext()){
+            Contenido c = Contenido.getInstance();
+        }
+        
     }
 
     @Override
     public String toString() {
-        return "Suscriptor{" + "usuario=" + usuario.getUserNickname() + ", streamerSuscrito=" + streamerSuscrito + ", estrategiaSubs=" + estrategiaSubs + '}';
+        return "Suscriptor{" + "usuario=" + usuario.getUserNickname() + ", streamerSuscrito=" + streamerSuscrito
+                + ", estrategiaSubs=" + estrategiaSubs + '}';
     }
 
 }

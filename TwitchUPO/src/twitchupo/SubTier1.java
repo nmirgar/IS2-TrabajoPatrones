@@ -8,9 +8,9 @@ package twitchupo;
 
 public class SubTier1 implements EstrategiaSubs {
 
-    public static final double precioT1 = 4.99;
+    private static final double precioT1 = 4.99;
 
-    public double getPrecioT1() {
+    public static double getPrecioT1() {
         return precioT1;
     }
     

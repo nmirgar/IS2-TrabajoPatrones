@@ -6,7 +6,11 @@ package twitchupo;
 
 public class SubTier3 implements EstrategiaSubs {
 
-    public static final double precioT3 = 24.99;
+    private static final double precioT3 = 24.99;
+
+    public static double getPrecioT3() {
+        return precioT3;
+    }
 
     @Override
     public void pagarSuscripcion(Suscriptor sub, Streamer streamer) {

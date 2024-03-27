@@ -7,7 +7,7 @@ package twitchupo;
 import java.util.Date;
 
 public class VOD extends Contenido {
-    
+
     private Streamer streamer;
 
     public VOD(int id, String titulo, Date fecha, Streamer streamer) {

@@ -9,12 +9,24 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class Streamer extends Usuario {
+public class Streamer extends Usuario implements Estado {
 
     private List<Usuario> seguidores;
     private List<Suscriptor> suscriptores;
-
     private double sueldo = 0;
+    private String estado = DESCONECTADO;
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado() {
+        if(estado.equals(DESCONECTADO)){
+            this.estado = conectarse();
+        }else if(estado.equals(CONECTADO)){ 
+            this.estado = desconectarse();
+        }
+    }
 
     public Streamer(int id, String userNickname, String contraseña, String biografia, String correo) {
         super(id, userNickname, contraseña, biografia, correo);
@@ -54,11 +66,11 @@ public class Streamer extends Usuario {
         while (it.hasNext()) {
             s = (Suscriptor) it.next();
             if (s.getEstrategiaSubs() instanceof SubTier1) {
-                sueldo += SubTier1.precioT1 / 2;
+                sueldo += SubTier1.getPrecioT1()/ 2;
             } else if (s.getEstrategiaSubs() instanceof SubTier2) {
-                sueldo += SubTier2.precioT2 / 2;
+                sueldo += SubTier2.getPrecioT2() / 2;
             } else if (s.getEstrategiaSubs() instanceof SubTier3) {
-                sueldo += SubTier3.precioT3 / 2;
+                sueldo += SubTier3.getPrecioT3() / 2;
             } else {
                 sueldo += 1;
 
@@ -70,6 +82,15 @@ public class Streamer extends Usuario {
     @Override
     public String toString() {
         return "Streamer" + super.toString() + "Sueldo: " + sueldo;
+    }
+
+    public String conectarse(){
+        StreamerConectarse sc = new StreamerConectarse();
+        return sc.conectarse();
+    }
+    public String desconectarse(){
+        StreamerDesconectarse sd = new StreamerDesconectarse();
+        return sd.desconectarse();
     }
 
 }

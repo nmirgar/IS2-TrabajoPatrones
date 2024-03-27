@@ -8,12 +8,12 @@ import java.util.Date;
 import java.util.Scanner;
 
 public class FactoriaContenido {
+    private static Twitch t = null;
+    private static String titulo; 
+    private static Date fecha;
 
     public static void crearContenido(String tipoContenido, Streamer streamer) {
-        Twitch t = Twitch.create(); //SINGLETON
-
-        String titulo;
-        Date fecha;
+        t = Twitch.create(); //SINGLETON
 
         Scanner sc = new Scanner(System.in);
 

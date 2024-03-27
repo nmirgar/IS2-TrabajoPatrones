@@ -2,8 +2,8 @@ package twitchupo;
 
 public interface Estado {
 
-    public String bloquear();
-    public void activo();
-    public void siguiente();
-    public void anterior();
+    public static final String CONECTADO = "conectado";
+    public static final String DESCONECTADO ="desconectado";
+    public  String conectarse();
+    public  String desconectarse();
 }

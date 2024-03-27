@@ -10,11 +10,11 @@ import java.util.List;
 
 public class Usuario {
 
-    int id;
-    String userNickname;
-    String contraseña;
-    String biografia;
-    String correo;
+    private int id;
+    private String userNickname;
+    private String contraseña;
+    private String biografia;
+    private String correo;
 
     private List<Streamer> seguidos; //Sigo a streamers
     private List<Streamer> suscritos; //Me suscribo a streamers

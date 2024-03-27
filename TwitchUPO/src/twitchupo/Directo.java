@@ -6,9 +6,10 @@ package twitchupo;
 
 import java.util.Date;
 
-public class Directo extends Contenido {
+public class Directo extends Contenido{
     
     private Streamer streamer;
+    
     //Patron state
 
     public Directo(int id, String titulo, Date fecha, Streamer streamer) {
