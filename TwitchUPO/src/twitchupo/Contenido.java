@@ -43,6 +43,7 @@ public abstract class Contenido implements Sujeto {
         this.fecha = fecha;
     }
 
+    //Patron observador
     public void registrarObservador(Observador o) {
         observadores.add(o);
     }

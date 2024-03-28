@@ -13,27 +13,17 @@ public class Streamer extends Usuario implements Estado {
 
     private List<Usuario> seguidores;
     private List<Suscriptor> suscriptores;
+
     private List<Contenido> contenidoSubido;
 
     private double sueldo = 0;
     private String estado = DESCONECTADO;
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado() {
-        if(estado.equals(DESCONECTADO)){
-            this.estado = conectarse();
-        }else if(estado.equals(CONECTADO)){ 
-            this.estado = desconectarse();
-        }
-    }
-
     public Streamer(int id, String userNickname, String contraseña, String biografia, String correo) {
         super(id, userNickname, contraseña, biografia, correo);
         this.seguidores = new ArrayList<Usuario>();
         this.suscriptores = new ArrayList<Suscriptor>();
+        this.contenidoSubido = new ArrayList<Contenido>();
     }
 
     public List<Usuario> getSeguidores() {
@@ -46,6 +36,18 @@ public class Streamer extends Usuario implements Estado {
 
     public List<Suscriptor> getSuscriptores() {
         return suscriptores;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado() {
+        if(estado.equals(DESCONECTADO)){
+            this.estado = conectarse();
+        }else if(estado.equals(CONECTADO)){ 
+            this.estado = desconectarse();
+        }
     }
 
     //Añadir gente - desde USUARIO
@@ -66,10 +68,22 @@ public class Streamer extends Usuario implements Estado {
         this.suscriptores.remove(sub);
     }
 
+    //Contenido
     public void subirContenido(Contenido d){
         this.contenidoSubido.add(d);
     }
 
+    //Conectarse / desconectarse
+    public String conectarse(){
+        StreamerConectarse sc = new StreamerConectarse();
+        return sc.conectarse();
+    }
+    public String desconectarse(){
+        StreamerDesconectarse sd = new StreamerDesconectarse();
+        return sd.desconectarse();
+    }
+
+    //Cobrar
     public double cobrar() {
         Suscriptor s;
         Iterator<Suscriptor> it = suscriptores.iterator();
@@ -92,15 +106,6 @@ public class Streamer extends Usuario implements Estado {
     @Override
     public String toString() {
         return "Streamer" + super.toString() + "Sueldo: " + sueldo;
-    }
-
-    public String conectarse(){
-        StreamerConectarse sc = new StreamerConectarse();
-        return sc.conectarse();
-    }
-    public String desconectarse(){
-        StreamerDesconectarse sd = new StreamerDesconectarse();
-        return sd.desconectarse();
     }
 
 }

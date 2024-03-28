@@ -10,8 +10,6 @@ public class Directo extends Contenido{
     
     private Streamer streamer;
     
-    //Patron state
-
     public Directo(int id, String titulo, Date fecha, Streamer streamer) {
         super(id, titulo, fecha);
         this.streamer = streamer;
