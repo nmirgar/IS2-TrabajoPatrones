@@ -9,16 +9,16 @@ import java.util.Scanner;
 
 public class FactoriaContenido {
     private static Twitch t = null;
-    private static String titulo; 
+    private static String titulo;
     private static Date fecha;
 
     public static void crearContenido(String tipoContenido, Streamer streamer) {
-        t = Twitch.create(); //SINGLETON
-
-        Scanner sc = new Scanner(System.in);
+        t = Twitch.create(); // SINGLETON
 
         switch (tipoContenido) {
-            case "Directo":
+            case "Directo" -> {
+
+                Scanner sc = new Scanner(System.in);
                 System.out.println("Título del directo");
                 titulo = sc.nextLine();
                 fecha = new Date();
@@ -26,16 +26,16 @@ public class FactoriaContenido {
                 Directo d = new Directo(t.getDirectos().size(), titulo, fecha, streamer);
 
                 t.hacerDirecto(d);
-                
-                break;
+            }
 
-            case "VOD":
+            case "VOD" -> {
+                Scanner sc = new Scanner(System.in);
                 t.listarDirectos(streamer);
                 System.out.println("Título el ID del directo");
                 int id;
                 id = sc.nextInt();
 
-                //porque un VOD al final es un directo resubido
+                // porque un VOD al final es un directo resubido
                 Directo daux = t.getDirecto(id);
                 titulo = daux.getTitulo();
                 fecha = daux.getFecha();
@@ -43,10 +43,11 @@ public class FactoriaContenido {
                 VOD vod = new VOD(t.getDirectos().size(), titulo, fecha, streamer);
 
                 t.subirVOD(vod);
-                
-                break;
+            }
 
-            case "Clip":
+            case "Clip" -> {
+                Scanner sc = new Scanner(System.in);
+
                 System.out.println("Título del Clip");
                 titulo = sc.nextLine();
 
@@ -59,10 +60,9 @@ public class FactoriaContenido {
                 Clip c = new Clip(t.getDirectos().size(), titulo, fecha, duracion, streamer);
 
                 t.hacerClip(c);
-                
-                break;
+            }
+
         }
-        sc.close();
     }
 
 }

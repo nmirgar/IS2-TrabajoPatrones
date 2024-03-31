@@ -24,6 +24,8 @@ public class TwitchUPO {
         s.setEstado();
         System.out.println(s.getEstado());
         FactoriaContenido.crearContenido("Directo", s);
+        FactoriaContenido.crearContenido("VOD", s);
+        FactoriaContenido.crearContenido("Clip", s);
         s.setEstado();
         System.out.println(s.getEstado());
         

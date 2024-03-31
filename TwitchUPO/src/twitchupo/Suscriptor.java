@@ -71,8 +71,12 @@ public class Suscriptor implements Observador {
     }
 
     public void update(Streamer s, Contenido c){
-      
-        System.out.println("\nEl Streamer " + s.getUserNickname() + " acaba de subir nuevo contenido: " + c.getTitulo() +".\n");
+        switch (c){
+            case Directo d -> System.out.println("\nEl Streamer " + s.getUserNickname() + " acaba de subir un nuevo directo: " + c.getTitulo() +".\n");
+            case VOD v -> System.out.println("\nEl Streamer " + s.getUserNickname() + " acaba de subir un nuevo VOD: " + c.getTitulo() +".\n");
+            case Clip clip -> System.out.println("\nEl Streamer " + s.getUserNickname() + " acaba de subir un nuevo Clip: " + c.getTitulo() + ".\n");
+            default -> System.out.println("\nEl Streamer " + s.getUserNickname() + " acaba de subir nuevo contenido: " + c.getTitulo() + ".\n");
+        }
     }
 
     @Override
