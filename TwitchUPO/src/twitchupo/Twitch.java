@@ -27,7 +27,10 @@ public class Twitch {
         this.vods = new ArrayList<>();
         this.clips = new ArrayList<>();
         this.contenido = new ArrayList<>();
+<<<<<<< HEAD
 
+=======
+>>>>>>> fd20228d40be074209691926c87a51ca9e733db6
         this.usuarios = new ArrayList<>();
         this.streamers = new ArrayList<>();
     }
@@ -208,18 +211,5 @@ public class Twitch {
         return u;
     }
 
-    //Buscar streamer
-    public Streamer buscarStreamer(Streamer streamer) {
-        Iterator<Streamer> it = streamers.iterator();
-        Streamer s = null;
-        boolean exito = false;
-        while (it.hasNext() && !exito) {
-            s = (Streamer) it.next();
-            if (s.getUserNickname().equals(streamer.getUserNickname())) {
-                exito = true;
-            }
-        }
-        return s;
-    }
 
 }

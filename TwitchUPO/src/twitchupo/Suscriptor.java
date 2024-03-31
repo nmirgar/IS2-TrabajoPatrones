@@ -6,28 +6,57 @@ package twitchupo;
 
 import java.util.*;
 
-public class Suscriptor implements Observador {
+public class Suscriptor extends Usuario implements Observador {
 
-    private Usuario usuario;
-    private ArrayList<Streamer> suscripciones; // Streamers suscritos
+    private ArrayList<Streamer> suscripciones; //Streamer suscritos
     private EstrategiaSubs estrategiaSubs;
 
-    public Suscriptor(Usuario usuario, Streamer streamerSuscrito) {
-        this.usuario = usuario;
-        this.suscripciones.add(streamerSuscrito);
-        this.estrategiaSubs = new SubTier1(); // La sub por defecto es la Tier1
+    public Suscriptor(Usuario u, Streamer s) {
+        super(u.getId(), u.getUserNickname(), u.getContraseña(), u.getBiografia(), u.getCorreo());
+        this.suscripciones = new ArrayList<>();
+        this.suscripciones.add(s);
+        // La sub por defecto es la Tier1
+        this.estrategiaSubs = new SubTier1();
+        suscribirse(s);
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Suscriptor getSuscriptor() {
+        return this;
     }
 
-    public ArrayList<Streamer> getStreamersSuscritos() {
+    public ArrayList<Streamer> getsuscripciones() {
         return suscripciones;
     }
 
     public void setEstrategiaSubs(EstrategiaSubs estrategiaSubs) {
         this.estrategiaSubs = estrategiaSubs;
+    }
+    
+    // Suscribirse - quitar suscripcion
+    public void suscribirse(Streamer streamer) {
+        this.suscripciones.add(streamer);
+        estrategiaSubs.pagarSuscripcion(this, streamer);
+        streamer.añadirSuscriptor(this);
+    }
+
+    public void cancelarSuscripcion(Streamer streamer) {
+        this.suscripciones.remove(streamer);
+        streamer.bajarSuscriptor(this);
+    }
+
+    // Renovar sub
+    public void renovarSub(Streamer streamer) {
+        Iterator<Streamer> it = suscripciones.iterator();
+        Streamer s = null;
+        boolean exito = false;
+        while (it.hasNext() && !exito) {
+            s = (Streamer) it.next();
+            if (s == streamer) {
+                estrategiaSubs.pagarSuscripcion(this, s);
+                exito = true;
+            }
+        }
+
     }
 
     public EstrategiaSubs getEstrategiaSubs() {
@@ -88,16 +117,24 @@ public class Suscriptor implements Observador {
         }
     }
 
-    // Notificacion contenido
-    public void update(Streamer s, Contenido c) {
 
-        System.out.println(
-                "\nEl Streamer " + s.getUserNickname() + "acaba de subir nuevo contenido: " + c.getTitulo());
+
+    public void update(Streamer s, Contenido c) {
+        switch (c) {
+            case Directo d -> System.out.println("\nEl Streamer " + s.getUserNickname()
+                    + " acaba de subir un nuevo directo: " + c.getTitulo() + ".\n");
+            case VOD v -> System.out.println(
+                    "\nEl Streamer " + s.getUserNickname() + " acaba de subir un nuevo VOD: " + c.getTitulo() + ".\n");
+            case Clip clip -> System.out.println(
+                    "\nEl Streamer " + s.getUserNickname() + " acaba de subir un nuevo Clip: " + c.getTitulo() + ".\n");
+            default -> System.out.println("\nEl Streamer " + s.getUserNickname() + " acaba de subir nuevo contenido: "
+                    + c.getTitulo() + ".\n");
+        }
     }
 
     @Override
     public String toString() {
-        return "Suscriptor{" + "usuario=" + usuario.getUserNickname() + ", streamerSuscrito=" + suscripciones
+        return "Suscriptor{" + "usuario=" + this.getUserNickname() + ", suscripciones=" + suscripciones
                 + ", estrategiaSubs=" + estrategiaSubs + '}';
     }
 

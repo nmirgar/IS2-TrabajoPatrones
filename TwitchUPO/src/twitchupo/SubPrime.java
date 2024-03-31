@@ -15,7 +15,7 @@ public class SubPrime implements EstrategiaSubs {
 
     @Override
     public void pagarSuscripcion(Suscriptor sub, Streamer streamer) {
-        System.out.println("El usuario" + sub.getUsuario().getUserNickname() + "se ha suscrito a" + streamer.getUserNickname() + " con Prime pagando: " + precioPrime + "€");
+        System.out.println("El usuario " + sub.getSuscriptor().getUserNickname() + " se ha suscrito a " + streamer.getUserNickname() + " con Prime pagando: " + precioPrime + "€");
 
     }
 

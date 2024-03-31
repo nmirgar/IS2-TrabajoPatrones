@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package twitchupo;
 
 import java.util.*;
@@ -13,10 +9,15 @@ public abstract class Contenido implements Sujeto {
     private Date fecha;
     private ArrayList <Observador> observadores;
 
-    public Contenido(int id, String titulo, Date fecha) {
+    public Contenido(int id, String titulo, Date fecha, Usuario u) {
         this.id = id;
         this.titulo = titulo;
         this.fecha = fecha;
+        
+        if(u instanceof Streamer){
+            Streamer s = (Streamer) u;
+            this.observadores = new ArrayList<>(s.getSuscriptores());
+        }
     }
 
     public int getId() {
@@ -42,8 +43,13 @@ public abstract class Contenido implements Sujeto {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
+<<<<<<< HEAD
 
     //Patron observador
+=======
+    
+    // Patron observador
+>>>>>>> fd20228d40be074209691926c87a51ca9e733db6
     public void registrarObservador(Observador o) {
         observadores.add(o);
     }

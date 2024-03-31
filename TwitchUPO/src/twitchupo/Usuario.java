@@ -15,7 +15,12 @@ public class Usuario {
     private String biografia;
     private String correo;
 
+<<<<<<< HEAD
     private List<Streamer> seguidos; // Sigo a streamers
+=======
+    private List<Streamer> seguidos; //Sigo a streamers
+
+>>>>>>> fd20228d40be074209691926c87a51ca9e733db6
 
     public Usuario(int id, String userNickname, String contraseña, String biografia, String correo) {
         this.id = id;
@@ -24,7 +29,10 @@ public class Usuario {
         this.biografia = biografia;
         this.correo = correo;
         this.seguidos = new ArrayList<Streamer>();
+<<<<<<< HEAD
 
+=======
+>>>>>>> fd20228d40be074209691926c87a51ca9e733db6
     }
 
     public int getId() {
@@ -71,9 +79,14 @@ public class Usuario {
         return seguidos;
     }
 
+<<<<<<< HEAD
     // Seguir - dejar de seguir
     public void seguir(Streamer streamer) {
 
+=======
+    //Seguir -  dejar de seguir
+    public void seguir(Streamer streamer) {       
+>>>>>>> fd20228d40be074209691926c87a51ca9e733db6
         streamer.añadirSeguidor(this);
         this.seguidos.add(streamer);
     }
@@ -82,6 +95,11 @@ public class Usuario {
         streamer.bajarSeguidor(this);
         this.seguidos.remove(streamer);
     }
+<<<<<<< HEAD
+=======
+    
+   
+>>>>>>> fd20228d40be074209691926c87a51ca9e733db6
 
     @Override
     public String toString() {

@@ -10,8 +10,13 @@ public class Directo extends Contenido{
     
     private Streamer streamer;
     
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> fd20228d40be074209691926c87a51ca9e733db6
     public Directo(int id, String titulo, Date fecha, Streamer streamer) {
-        super(id, titulo, fecha);
+        super(id, titulo, fecha, streamer);
         this.streamer = streamer;
     }
 

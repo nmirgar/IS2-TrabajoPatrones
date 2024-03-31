@@ -12,7 +12,7 @@ public class Clip extends Contenido {
     private Usuario usuario; //Los clips los puede generar cualquiera
 
     public Clip(int id, String titulo, Date fecha, int duracion, Usuario usuario) {
-        super(id, titulo, fecha);
+        super(id, titulo, fecha, usuario);
         this.duracion = duracion;
         this.usuario = usuario;
     }
@@ -32,7 +32,7 @@ public class Clip extends Contenido {
 
     @Override
     public String toString() {
-        return "Clip" + super.toString() + "duracion=" + duracion + '}'+ "Creado por: " + usuario.getUserNickname();
+        return "Clip" + super.toString() + "duracion=" + duracion + '}' + "Creado por: " + usuario.getUserNickname();
     }
 
 }
