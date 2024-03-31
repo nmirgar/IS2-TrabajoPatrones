@@ -17,7 +17,18 @@ public class TwitchUPO {
         t.añadirStreamer(s);
 
         Usuario u = t.getUsuarios().get(0);
+        Usuario u2 = t.getUsuarios().get(1);
+        Usuario u3 = t.getUsuarios().get(2);
         Suscriptor sub = u.suscribirse(s);
+        u3.seguir(s);
+        s.getSeguidores().toString();
+        u3.dejarDeSeguir(s);
+        s.getSeguidores().toString();
+
+        Suscriptor sub2 = u2.suscribirse(s);
+        s.getSuscriptores().toString();
+        u2.cancelarSuscripcion(s);
+        s.getSuscriptores().toString();
        
         sub.cambiarSuscripcion("Tier2");
         sub.getEstrategiaSubs().pagarSuscripcion(sub, s);
