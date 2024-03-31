@@ -90,11 +90,12 @@ public class Usuario {
     }
     
     //Suscribirse - quitar suscripcion
-    public void suscribirse(Streamer streamer){
+    public Suscriptor suscribirse(Streamer streamer){
         Suscriptor sub = new Suscriptor(this, streamer);
         streamer.añadirSuscriptor(sub);        
         this.suscritos.add(streamer);
         
+        return sub;
     }
     
     public void cancelarSuscripcion(Streamer streamer){

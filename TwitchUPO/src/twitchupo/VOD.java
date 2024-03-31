@@ -11,7 +11,7 @@ public class VOD extends Contenido {
     private Streamer streamer;
 
     public VOD(int id, String titulo, Date fecha, Streamer streamer) {
-        super(id, titulo, fecha);
+        super(id, titulo, fecha, streamer);
         this.streamer = streamer;
     }
 

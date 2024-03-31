@@ -13,6 +13,7 @@ public class Suscriptor implements Observador {
 
     public Suscriptor(Usuario usuario, Streamer streamerSuscrito) {
         this.usuario = usuario;
+        this.streamerSuscrito = new ArrayList<>();
         this.streamerSuscrito.add(streamerSuscrito);
         // La sub por defecto es la Tier1
         this.estrategiaSubs = new SubTier1();

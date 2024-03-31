@@ -17,14 +17,12 @@ public class TwitchUPO {
         t.añadirStreamer(s);
 
         Usuario u = t.getUsuarios().get(0);
-        u.suscribirse(s);
-        int x = s.getSuscriptores().indexOf(u);
-        Suscriptor sub = s.getSuscriptores().get(x);
+        Suscriptor sub = u.suscribirse(s);
+       
         sub.cambiarSuscripcion("Tier2");
         sub.getEstrategiaSubs().pagarSuscripcion(sub, s);
         s.conectarse();
-        FactoriaContenido fc = new FactoriaContenido();
-        fc.crearContenido("Directo", s);
+        FactoriaContenido.crearContenido("Directo", s);
         s.desconectarse();
         
     }

@@ -26,7 +26,7 @@ public class Twitch {
         this.directos = new ArrayList<>();
         this.vods = new ArrayList<>();
         this.clips = new ArrayList<>();
-
+        this.contenido = new ArrayList<>();
         this.usuarios = new ArrayList<>();
         this.streamers = new ArrayList<>();
     }

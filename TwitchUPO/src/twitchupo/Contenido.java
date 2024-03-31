@@ -9,10 +9,14 @@ public abstract class Contenido implements Sujeto {
     private Date fecha;
     private ArrayList <Observador> observadores;
 
-    public Contenido(int id, String titulo, Date fecha) {
+    public Contenido(int id, String titulo, Date fecha, Usuario u) {
         this.id = id;
         this.titulo = titulo;
         this.fecha = fecha;
+        if( u instanceof Streamer){
+            Streamer s = (Streamer) u;
+            this.observadores = new ArrayList<>(s.getSuscriptores());
+        }
     }
 
     public int getId() {

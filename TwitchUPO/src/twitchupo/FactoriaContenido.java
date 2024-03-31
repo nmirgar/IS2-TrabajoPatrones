@@ -12,8 +12,6 @@ public class FactoriaContenido {
     private static String titulo; 
     private static Date fecha;
 
-    public FactoriaContenido(){}
-
     public static void crearContenido(String tipoContenido, Streamer streamer) {
         t = Twitch.create(); //SINGLETON
 
