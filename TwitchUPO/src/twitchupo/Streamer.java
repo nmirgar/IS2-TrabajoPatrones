@@ -25,7 +25,12 @@ public class Streamer extends Usuario implements Estado {
         this.suscriptores = new ArrayList<Suscriptor>();
         this.contenidoSubido = new ArrayList<Contenido>();
     }
-
+    public Streamer(Usuario u){
+        super(u.getId(), u.getUserNickname(), u.getContraseña(), u.getBiografia(), u.getCorreo());
+        this.seguidores = new ArrayList<Usuario>();
+        this.suscriptores = new ArrayList<Suscriptor>();
+        this.contenidoSubido = new ArrayList<Contenido>();
+    }
     public List<Usuario> getSeguidores() {
         return seguidores;
     }
