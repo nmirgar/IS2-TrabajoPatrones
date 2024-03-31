@@ -18,7 +18,8 @@ public class TwitchUPO {
 
         Usuario u = t.getUsuarios().get(0);
         u.suscribirse(s);
-        Suscriptor sub = u.getSuscritos().get(0);
+        int x = s.getSuscriptores().indexOf(u);
+        Suscriptor sub = s.getSuscriptores().get(x);
         sub.cambiarSuscripcion("Tier2");
         sub.getEstrategiaSubs().pagarSuscripcion(sub, s);
         s.conectarse();
