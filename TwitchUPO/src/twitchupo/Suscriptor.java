@@ -6,14 +6,13 @@ package twitchupo;
 
 import java.util.*;
 
-public class Suscriptor implements Observador {
+public class Suscriptor extends Usuario implements Observador {
 
-    private Usuario usuario;
     private ArrayList<Streamer> suscripciones; //Streamer suscritos
     private EstrategiaSubs estrategiaSubs;
 
-    public Suscriptor(Usuario usuario, Streamer s) {
-        this.usuario = usuario;
+    public Suscriptor(Usuario u, Streamer s) {
+        super(u.getId(), u.getUserNickname(), u.getContraseña(), u.getBiografia(), u.getCorreo());
         this.suscripciones = new ArrayList<>();
         this.suscripciones.add(s);
         // La sub por defecto es la Tier1
@@ -22,7 +21,7 @@ public class Suscriptor implements Observador {
     }
 
     public Usuario getUsuario() {
-        return usuario;
+        return (Usuario)this;
     }
 
     public ArrayList<Streamer> getsuscripciones() {
@@ -108,7 +107,7 @@ public class Suscriptor implements Observador {
 
     @Override
     public String toString() {
-        return "Suscriptor{" + "usuario=" + usuario.getUserNickname() + ", suscripciones=" + suscripciones
+        return "Suscriptor{" + "usuario=" + this.getUserNickname() + ", suscripciones=" + suscripciones
                 + ", estrategiaSubs=" + estrategiaSubs + '}';
     }
 

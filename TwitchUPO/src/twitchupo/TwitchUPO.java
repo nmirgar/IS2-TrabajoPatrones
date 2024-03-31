@@ -21,14 +21,14 @@ public class TwitchUPO {
         Usuario u3 = t.getUsuarios().get(2);
         Suscriptor sub = new Suscriptor(u, s);
         u3.seguir(s);
-        System.out.println("\n" + s.getSeguidores() + "\n");
+        System.out.println("\nSeguidores antes de dejar de seguir\n" + s.getSeguidores() + "\n");
         u3.dejarDeSeguir(s);
-        System.out.println("\n" + s.getSeguidores()+ "\n");
+        System.out.println("\nSeguidores despues de dejar de seguir" + s.getSeguidores()+ "\n");
 
         Suscriptor sub2 = new Suscriptor(u2, s);
-        System.out.println("\n" + s.getSuscriptores()+ "\n");
+        System.out.println("\nSuscriptores: " + s.getSuscriptores()+ "\n");
         sub2.cancelarSuscripcion(s);
-        System.out.println("\n" + s.getSuscriptores()+ "\n");
+        System.out.println("\nDespues de cancelar suscripcion" + s.getSuscriptores()+ "\n");
        
         sub.cambiarSuscripcion("Tier2");
         sub.getEstrategiaSubs().pagarSuscripcion(sub, s);
