@@ -96,11 +96,13 @@ public class Streamer extends Usuario implements Estado {
 
     public String conectarse(){
         StreamerConectarse sc = new StreamerConectarse();
-        return sc.conectarse();
+        this.estado = sc.conectarse();
+        return this.estado;
     }
     public String desconectarse(){
         StreamerDesconectarse sd = new StreamerDesconectarse();
-        return sd.desconectarse();
+        this.estado = sd.desconectarse();
+        return this.estado;
     }
 
 }

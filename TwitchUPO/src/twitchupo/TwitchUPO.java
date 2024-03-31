@@ -21,9 +21,11 @@ public class TwitchUPO {
        
         sub.cambiarSuscripcion("Tier2");
         sub.getEstrategiaSubs().pagarSuscripcion(sub, s);
-        s.conectarse();
+        s.setEstado();
+        System.out.println(s.getEstado());
         FactoriaContenido.crearContenido("Directo", s);
-        s.desconectarse();
+        s.setEstado();
+        System.out.println(s.getEstado());
         
     }
     

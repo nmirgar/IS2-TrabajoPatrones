@@ -72,7 +72,7 @@ public class Suscriptor implements Observador {
 
     public void update(Streamer s, Contenido c){
       
-        System.out.println("\nEl Streamer " + s.getUserNickname() + "acaba de subir nuevo contenido: " + c.getTitulo() +".\n");
+        System.out.println("\nEl Streamer " + s.getUserNickname() + " acaba de subir nuevo contenido: " + c.getTitulo() +".\n");
     }
 
     @Override
