@@ -27,6 +27,7 @@ public class TwitchUPO {
 
         Suscriptor sub2 = new Suscriptor(u2, s);
         System.out.println("\nSuscriptores: " + s.getSuscriptores()+ "\n");
+        sub2.renovarSub(s);
         sub2.cancelarSuscripcion(s);
         System.out.println("\nDespues de cancelar suscripcion" + s.getSuscriptores()+ "\n");
        
