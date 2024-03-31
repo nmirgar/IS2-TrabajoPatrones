@@ -29,6 +29,14 @@ public class TwitchUPO {
         s.setEstado();
         System.out.println(s.getEstado());
         
+        t.borrarDirecto(t.getDirecto(0));
+        t.borrarClip(t.getClip(0));
+        t.borrarVOD(t.getVod(0));
+
+        t.eliminarStreamer(s);
+        t.eliminarUsuario(u);
+
+
     }
     
 }
