@@ -207,18 +207,5 @@ public class Twitch {
         return u;
     }
 
-    //Buscar streamer
-    public Streamer buscarStreamer(Streamer streamer) {
-        Iterator<Streamer> it = streamers.iterator();
-        Streamer s = null;
-        boolean exito = false;
-        while (it.hasNext() && !exito) {
-            s = (Streamer) it.next();
-            if (s.getUserNickname().equals(streamer.getUserNickname())) {
-                exito = true;
-            }
-        }
-        return s;
-    }
 
 }

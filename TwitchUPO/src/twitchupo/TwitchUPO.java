@@ -19,16 +19,16 @@ public class TwitchUPO {
         Usuario u = t.getUsuarios().get(0);
         Usuario u2 = t.getUsuarios().get(1);
         Usuario u3 = t.getUsuarios().get(2);
-        Suscriptor sub = u.suscribirse(s);
+        Suscriptor sub = new Suscriptor(u, s);
         u3.seguir(s);
-        s.getSeguidores().toString();
+        System.out.println("\n" + s.getSeguidores() + "\n");
         u3.dejarDeSeguir(s);
-        s.getSeguidores().toString();
+        System.out.println("\n" + s.getSeguidores()+ "\n");
 
-        Suscriptor sub2 = u2.suscribirse(s);
-        s.getSuscriptores().toString();
-        u2.cancelarSuscripcion(s);
-        s.getSuscriptores().toString();
+        Suscriptor sub2 = new Suscriptor(u2, s);
+        System.out.println("\n" + s.getSuscriptores()+ "\n");
+        sub2.cancelarSuscripcion(s);
+        System.out.println("\n" + s.getSuscriptores()+ "\n");
        
         sub.cambiarSuscripcion("Tier2");
         sub.getEstrategiaSubs().pagarSuscripcion(sub, s);
@@ -39,6 +39,16 @@ public class TwitchUPO {
         FactoriaContenido.crearContenido("Clip", s);
         s.setEstado();
         System.out.println(s.getEstado());
+        
+        System.out.println();
+        t.listarDirectos(s);
+        System.out.println();
+        t.listarClips(s);
+        System.out.println();
+        t.listarVODs(s);
+            
+        System.out.println("Usuario: " + t.buscarUsuario(u));
+        System.out.println("Streamer:" + t.buscarUsuario(s));
         
         t.borrarDirecto(t.getDirecto(0));
         t.borrarClip(t.getClip(0));

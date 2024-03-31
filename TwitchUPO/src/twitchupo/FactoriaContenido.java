@@ -24,7 +24,7 @@ public class FactoriaContenido {
                 fecha = new Date();
 
                 Directo d = new Directo(t.getDirectos().size(), titulo, fecha, streamer);
-
+                
                 t.hacerDirecto(d);
             }
 

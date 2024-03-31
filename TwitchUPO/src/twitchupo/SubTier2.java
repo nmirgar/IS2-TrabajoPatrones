@@ -14,7 +14,7 @@ public class SubTier2 implements EstrategiaSubs {
 
     @Override
     public void pagarSuscripcion(Suscriptor sub, Streamer streamer) {
-        System.out.println("El usuario" + sub.getUsuario().getUserNickname() + "se ha suscrito a" + streamer.getUserNickname() + " con Tier 2 pagando: " + precioT2 + "€");
+        System.out.println("El usuario " + sub.getUsuario().getUserNickname() + " se ha suscrito a " + streamer.getUserNickname() + " con Tier 2 pagando: " + precioT2 + "€");
 
     }
 

@@ -13,7 +13,8 @@ public abstract class Contenido implements Sujeto {
         this.id = id;
         this.titulo = titulo;
         this.fecha = fecha;
-        if( u instanceof Streamer){
+        
+        if(u instanceof Streamer){
             Streamer s = (Streamer) u;
             this.observadores = new ArrayList<>(s.getSuscriptores());
         }
@@ -42,7 +43,8 @@ public abstract class Contenido implements Sujeto {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
-
+    
+    // Patron observador
     public void registrarObservador(Observador o) {
         observadores.add(o);
     }

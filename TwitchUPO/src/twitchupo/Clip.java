@@ -32,7 +32,7 @@ public class Clip extends Contenido {
 
     @Override
     public String toString() {
-        return "Clip" + super.toString() + "duracion=" + duracion + '}';
+        return "Clip" + super.toString() + "duracion=" + duracion + '}' + "Creado por: " + usuario.getUserNickname();
     }
 
 }
