@@ -20,8 +20,8 @@ public class Suscriptor extends Usuario implements Observador {
         suscribirse(s);
     }
 
-    public Usuario getUsuario() {
-        return (Usuario)this;
+    public Suscriptor getSuscriptor() {
+        return this;
     }
 
     public ArrayList<Streamer> getsuscripciones() {
